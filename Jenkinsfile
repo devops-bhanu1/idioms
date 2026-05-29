@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('scm') {
             steps {
-                git branch:'main', url: 'https://github.com/A2Znipuna/webapp.git'
+                git branch:'main', url: 'https://github.com/devops-bhanu1/idioms.git'
             }
         }
         stage ("Archive the Artifacts") {
@@ -13,7 +13,7 @@ pipeline {
         }
         stage ('Build') {
             steps {
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'webserver', transfers: [sshTransfer(excludes: '', execCommand: '', execTimeout: 120000, flatten:true, makeEmptyDirs: false, noDefaultExcludes:false, patternSeparator: '[, ]+', remoteDirectory:'www/html', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'webserver1', transfers: [sshTransfer(excludes: '', execCommand: '', execTimeout: 120000, flatten:true, makeEmptyDirs: false, noDefaultExcludes:false, patternSeparator: '[, ]+', remoteDirectory:'www/html', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.*')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
             }
         }
     }
